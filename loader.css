@@ -1,0 +1,46 @@
+/* Add to your style.css or in a <style> block */
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.spinner {
+  border: 6px solid #444;
+  border-top: 6px solid pink;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 15px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+body:not(.loaded) .main-content, 
+body:not(.loaded) .overlay,
+body:not(.loaded) video,
+body:not(.loaded) .swiper {
+  opacity: 0;
+  pointer-events: none;
+}
+
+body.loaded .main-content,
+body.loaded .overlay,
+body.loaded video,
+body.loaded .swiper {
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 2s ease;
+}
